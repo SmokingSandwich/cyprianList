@@ -1,0 +1,18 @@
+- Zadanie w osobnym projekcie --> własna implementacja listy z metodami:
+- dodanie elementu do listy,
+- usunięcie pierwszego,
+- usunięcie ostatniego elementu
+- pobranie pierwszego,
+- pobranie ostatniego elementu,
+- pobranie wybranego
+- usunięcie wybranego elementu,
+- metoda size() zwracająca ilość elementów w tej liśćie
+- Add()
+- AddFirst()
+- Lista ma dodawać na koniec listy
+-
+- Później
+- iterator własny z metodą
+- hasNext() oraz
+- next()
+- Przykłady, testy
