@@ -1,10 +1,6 @@
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-
 public class CyprianList {
     MyNode head;
-    MyNode tail; //todo
+    MyNode tail;
 
     private int size = 0;
 
@@ -26,7 +22,6 @@ public class CyprianList {
             addFirst(data);
         } else {
             MyNode node = new MyNode(data);
-
             MyNode current = head;
             for (int i = 0; i < index - 1; i++) {
                 current = current.next;
@@ -37,20 +32,19 @@ public class CyprianList {
         size++;
     }
 
-    public void addLast(Object data) {
+    public void add(Object data) {
         MyNode node = new MyNode(data);
         if (head == null) {
             head = node;
         } else {
-            MyNode n = head;
-            while (n.next != null) {
-                n = n.next;
+            MyNode current = head;
+            while (current.next != null) {
+                current = current.next;
             }
-            n.next = node;
+            current.next = node;
         }
         size++;
     }
-
 
     public Object getFirst() {
         MyNode current;
@@ -74,14 +68,12 @@ public class CyprianList {
 
     public Object getLast() {
         MyNode current = head;
-        tail = head;
         for (int i = 0; i < size() - 1; i++) {
-            tail = tail.next;
+            current = current.next;
         }
-        return tail.getData();
+        return current.getData();
     }
 
-    //fixme
     public void deleteFirst() {
         head = head.next;
         size--;
@@ -93,17 +85,17 @@ public class CyprianList {
         } else {
             MyNode current = head;
             for (int i = 0; i < index - 1; i++) {
-                current.next = current.next.next;
+               current = current.next;
             }
+            current.next = current.next.next;
         }
         size--;
     }
 
-    //fixme
     public void deleteLast() {
         MyNode current = head;
         for (int i = 0; i < size() - 1; i++) {
-            current.next = current.next.next;
+            current = current.next;
         }
         size--;
     }
