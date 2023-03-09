@@ -15,6 +15,5 @@ public class Runner {
 //        System.out.println("List size: " + list.size);
         list.deleteLast();
 //        System.out.println("List size: " + list.size);
-        list.getListSize();
     }
 }

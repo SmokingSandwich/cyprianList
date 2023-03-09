@@ -83,14 +83,13 @@ public class CyprianList {
 
     //fixme
     public void deleteFirst() {
-        MyNode current = head;
-        current.next = current.next.next;
+        head = head.next;
         size--;
     }
 
     public void deleteAt(int index) {
         if (index == 0) {
-            head = head.next;
+            deleteFirst();
         } else {
             MyNode current = head;
             for (int i = 0; i < index - 1; i++) {
@@ -107,22 +106,5 @@ public class CyprianList {
             current.next = current.next.next;
         }
         size--;
-    }
-
-    public List<Object> getListSize() {
-        List<Object> list;
-
-        MyNode current = head;
-        if (current == null) {
-            System.out.println("This list is empty !");
-            return Collections.emptyList();
-        } else {
-            list = new LinkedList<>();
-            while (current != null) {
-                list.add(current);
-                current = current.next;
-            }
-        }
-        return list;
     }
 }
