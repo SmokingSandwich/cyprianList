@@ -4,6 +4,9 @@ public class CyprianList {
 
     private int size = 0;
 
+//    public CyprianIterator getIterator() {
+//    }
+
     //This method may show wrong size of the list if the connection between elements have been detached
     public int size() {
         return size;
@@ -74,29 +77,45 @@ public class CyprianList {
         return current.getData();
     }
 
-    public void deleteFirst() {
-        head = head.next;
-        size--;
+    public boolean deleteFirst() {
+        if (head != null) {
+            head = head.next;
+            size--;
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void deleteAt(int index) {
+    public boolean deleteAt(int index) {
         if (index == 0) {
-            deleteFirst();
-        } else {
+            return deleteFirst();
+        }
+
+        if (index < size && index > 0) {
             MyNode current = head;
             for (int i = 0; i < index - 1; i++) {
-               current = current.next;
+                current = current.next;
             }
             current.next = current.next.next;
         }
+        else {
+            return false;
+        }
         size--;
+        return true;
     }
 
-    public void deleteLast() {
+    public boolean deleteLast() {
+        if (size() == 0) {
+            return deleteFirst();
+        }
+
         MyNode current = head;
         for (int i = 0; i < size() - 1; i++) {
             current = current.next;
         }
         size--;
+        return true;
     }
 }

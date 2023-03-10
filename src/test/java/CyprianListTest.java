@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CyprianListTest {
 
-    //todo Add unhappy path for deleting when the list is empty
     //TODO iterator
 
     @Test
@@ -46,27 +45,8 @@ public class CyprianListTest {
         assertEquals(1, list.getFirst());
     }
 
-    //TODO add a test that checks multiple condtions at once
-
     @Test
-    void shouldGetFirst() {
-        //given
-        CyprianList list = new CyprianList();
-
-        //when
-        list.add(10);
-        list.add(2);
-        list.add(3);
-
-        //then
-        assertEquals(10, list.getFirst());
-        assertEquals(10, list.getAt(0));
-        assertEquals(2, list.getAt(1));
-        assertEquals(3, list.getAt(2));
-    }
-
-    @Test
-    void shouldGetLast() {
+    void shouldGetFirstAndLast() {
         //given
         CyprianList list = new CyprianList();
 
@@ -77,9 +57,9 @@ public class CyprianListTest {
         list.add(4);
 
         //then
+        assertEquals(1, list.getFirst());
         assertEquals(4, list.getLast());
     }
-
 
     @Test
     void shouldDeleteFirst() {
@@ -91,17 +71,16 @@ public class CyprianListTest {
         list.add(4);
 
         //when
-        list.deleteFirst();
+        boolean isDeleted = list.deleteFirst();
 
         //then
         assertEquals(3, list.size());
         assertEquals(2, list.getAt(0));
         assertEquals(3, list.getAt(1));
         assertEquals(4, list.getAt(2));
+        assertTrue(isDeleted);
     }
 
-    //fixme
-    //todo check if the elements are in the right order after deletion
     @Test
     void shouldDeleteAt() {
         //given
@@ -121,7 +100,6 @@ public class CyprianListTest {
         assertEquals(4, list.getAt(2));
     }
 
-    //fixme
     @Test
     void shouldDeleteLast() {
         //given
@@ -132,25 +110,56 @@ public class CyprianListTest {
         list.add(4);
 
         //when
-        list.deleteLast();
+        boolean isDeleted = list.deleteLast();
 
         //then
         assertEquals(3, list.size());
         assertEquals(1, list.getAt(0));
         assertEquals(2, list.getAt(1));
         assertEquals(3, list.getAt(2));
+        assertTrue(isDeleted);
     }
 
-    //todo Add unhappy path for deleting when the list is empty
     @Test
-    void shouldThrowExceptionWhenDeletingNonExistentElement() {
+    void shouldNotDeleteFirst() {
         //given
         CyprianList list = new CyprianList();
 
         //when
-//        list.deleteFirst();
+        boolean isDeleted = list.deleteFirst();
+        boolean isLastDeleted = list.deleteLast();
 
         //then
-        //assertThrows
+        assertEquals(0, list.size());
+        assertFalse(isDeleted);
+        assertFalse(isLastDeleted);
+    }
+
+    @Test
+    void shouldNotDeleteAtWrongIndex() {
+        //given
+        CyprianList list = new CyprianList();
+
+        //when
+        boolean isDeleted = list.deleteAt(1);
+        boolean isNegativeDeleted = list.deleteAt(-1);
+
+        //then
+        assertFalse(isDeleted);
+        assertFalse(isNegativeDeleted);
+        assertEquals(0, list.size());
+    }
+
+    @Test
+    void shouldNotDeleteLast() {
+        //given
+        CyprianList list = new CyprianList();
+
+        //when
+        boolean isDeleted = list.deleteLast();
+
+        //then
+        assertEquals(0, list.size());
+        assertFalse(isDeleted);
     }
 }
