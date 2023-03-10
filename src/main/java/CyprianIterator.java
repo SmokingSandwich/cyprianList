@@ -2,8 +2,8 @@ public class CyprianIterator {
 
     MyNode current;
 
-    public CyprianIterator(MyNode first) {
-        current = first;
+    public CyprianIterator(MyNode current) {
+        this.current = current;
     }
 
     public boolean hasNext() {

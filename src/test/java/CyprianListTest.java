@@ -35,7 +35,7 @@ public class CyprianListTest {
         list.add(3);
 
         //when
-        list.addAt(10,1);
+        list.addAt(10, 1);
 
         //then
         assertEquals(10, list.getAt(1));
@@ -161,5 +161,27 @@ public class CyprianListTest {
         //then
         assertEquals(0, list.size());
         assertFalse(isDeleted);
+    }
+
+    @Test
+    void shouldGoThroughAllElements() {
+        //given
+        CyprianList list = new CyprianList();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        list.add(50);
+
+        //when
+        CyprianList returnedList = list.returnAllObjectsFromList();
+
+        //then
+        assertEquals(5, returnedList.size());
+        assertEquals(10, list.getAt(0));
+        assertEquals(20, list.getAt(1));
+        assertEquals(30, list.getAt(2));
+        assertEquals(40, list.getAt(3));
+        assertEquals(50, list.getAt(4));
     }
 }

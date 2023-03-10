@@ -1,13 +1,21 @@
+import java.util.List;
+
 public class CyprianList {
     MyNode head;
-    MyNode tail;
 
     private int size = 0;
 
-//    public CyprianIterator getIterator() {
-//    }
+    CyprianIterator iterator;
 
-    //This method may show wrong size of the list if the connection between elements have been detached
+    public CyprianList returnAllObjectsFromList() {
+        CyprianList list = new CyprianList();
+        iterator = new CyprianIterator(head);
+        while(iterator.hasNext()) {
+            list.add(iterator.next());
+        }
+        return list;
+    }
+
     public int size() {
         return size;
     }
@@ -98,8 +106,7 @@ public class CyprianList {
                 current = current.next;
             }
             current.next = current.next.next;
-        }
-        else {
+        } else {
             return false;
         }
         size--;
