@@ -7,13 +7,8 @@ public class CyprianList {
 
     CyprianIterator iterator;
 
-    public CyprianList returnAllObjectsFromList() {
-        CyprianList list = new CyprianList();
-        iterator = new CyprianIterator(head);
-        while(iterator.hasNext()) {
-            list.add(iterator.next());
-        }
-        return list;
+    public CyprianIterator getIterator() {
+        return new CyprianIterator(head);
     }
 
     public int size() {

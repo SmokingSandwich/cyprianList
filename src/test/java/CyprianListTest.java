@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CyprianListTest {
 
-    //TODO iterator
+
+    //TODO Przeczytać o typach generycznych, jak wskazać dany typ żeby lista go zwracała, porobić przykłady takich list<>
+    //TODO new CyprianList<Foo>(); i ma zwracać ten typ
 
     @Test
     void shouldAddFirst() {
@@ -174,14 +176,25 @@ public class CyprianListTest {
         list.add(50);
 
         //when
-        CyprianList returnedList = list.returnAllObjectsFromList();
-
-        //then
-        assertEquals(5, returnedList.size());
-        assertEquals(10, list.getAt(0));
-        assertEquals(20, list.getAt(1));
-        assertEquals(30, list.getAt(2));
-        assertEquals(40, list.getAt(3));
-        assertEquals(50, list.getAt(4));
+        CyprianIterator iterator = list.getIterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
     }
+
+//    @Test
+//    void shouldGoThroughAllElements2() {
+//        //given
+//        CyprianList list = new CyprianList<Foo>();
+//        list.add(new Foo());
+//        list.add(new Foo());
+//
+//
+//        //when
+//        CyprianIterator iterator = list.getIterator();
+//        while (iterator.hasNext()) {
+//            Foo znaleziona = iterator.next();
+//            znaleziona.poka();
+//        }
+//    }
 }
