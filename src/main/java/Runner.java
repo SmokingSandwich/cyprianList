@@ -6,5 +6,11 @@ public class Runner {
         list.add(30);
         list.add(40);
         list.add(50);
+
+
+
+        Cat cat = new Cat();
+        cat.sayHello();
+
     }
 }

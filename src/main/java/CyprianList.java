@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class CyprianList {
+public class CyprianList <T extends Foo> {
     MyNode head;
 
     private int size = 0;
